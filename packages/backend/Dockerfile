@@ -1,12 +1,4 @@
-FROM node:18-bookworm-slim AS packages
-
-WORKDIR /app
-
-COPY packages packages
-
-RUN find packages \! -name "package.json" -mindepth 2 -maxdepth 2 -print | xargs rm -rf
-
-FROM node:18-bookworm-slim AS build
+FROM node:18-bookworm-slim
 
 # Install isolate-vm dependencies, these are needed by the @backstage/plugin-scaffolder-backend.
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \

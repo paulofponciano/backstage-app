@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backstage
 
     env:
       CI: true
@@ -68,6 +65,6 @@ jobs:
         uses: docker/build-push-action@v4
         with: 
           context: .
-          file: ./Dockerfile
+          file: packages/backend/Dockerfile
           push: true
           tags: paulofponciano/backstage:${{ github.sha }}, paulofponciano/backstage:latest
