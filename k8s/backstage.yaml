@@ -1,0 +1,76 @@
+# kubernetes/backstage.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backstage
+  namespace: backstage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage
+  template:
+    metadata:
+      labels:
+        app: backstage
+    spec:
+      serviceAccountName: backstage-service-account
+      containers:
+        - name: backstage
+          image: paulofponciano/backstage:latest
+          imagePullPolicy: 'Always'
+          ports:
+            - name: http
+              containerPort: 7007
+          envFrom:
+            - secretRef:
+                name: postgres-secrets
+            - secretRef:
+                name: backstage-secrets
+          env:
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_HOST
+            value: "postgres.backstage.svc.cluster.local"
+# Uncomment if health checks are enabled in your app:
+# https://backstage.io/docs/plugins/observability#health-checks
+#          readinessProbe:
+#            httpGet:
+#              port: 7007
+#              path: /healthcheck
+#          livenessProbe:
+#            httpGet:
+#              port: 7007
+#              path: /healthcheck
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backstage-service-account
+  namespace: backstage
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: backstage-cluster-ro
+subjects:
+- namespace: backstage
+  kind: ServiceAccount
+  name: backstage-service-account
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:aggregate-to-view
+---
+# kubernetes/backstage-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: backstage
+  namespace: backstage
+spec:
+  selector:
+    app: backstage
+  ports:
+    - name: http
+      port: 7007
