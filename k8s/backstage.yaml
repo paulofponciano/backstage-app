@@ -27,6 +27,8 @@ spec:
                 name: postgres-secrets
             - secretRef:
                 name: backstage-secrets
+            - secretRef:
+                name: github-auth-secrets
           env:
           - name: POSTGRES_PORT
             value: "5432"
