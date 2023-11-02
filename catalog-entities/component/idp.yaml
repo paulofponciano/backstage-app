@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage-idp
+  title: Backstage App
+  links:
+    - title: Backstage App
+      url: https://backstage.pauloponciano.digital/
+  annotations:
+    argocd/app-name: 'vnncld-idp'
+    backstage.io/kubernetes-id: 'vnncld-idp'
+    backstage.io/kubernetes-namespace: backstage
+spec:
+  type: website
+  system: vnncld-idp
+  owner: vnncld-authors
+  lifecycle: production
+  dependsOn:
+    - resource:pgdb
+    - resource:argocd
+    - resource:obc
+    - resource:keycloak
+    - resource:github

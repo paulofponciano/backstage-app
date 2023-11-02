@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: vnncld-authors
+  title: Valcann-IDP Authors
+spec:
+  type: team
+  children: []

@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: resources
+  description: A collection of all resources
+spec:
+  targets:
+    - ./resource/pgdb.yaml
+    - ./resource/argocd.yaml
+    - ./resource/obc.yaml
+    - ./resource/keycloak.yaml
+    - ./resource/github.yaml
