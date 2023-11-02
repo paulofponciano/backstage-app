@@ -83,14 +83,15 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
 catalog:
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
   rules:
     - allow: [Component, System, Group, Resource, Location, Template, API]
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    - type: github-discovery
-      target: https://github.com/paulofponciano/backstage-app
-      rules:
-        - allow: [Component, System, API, Group, User, Resource, Location]
+    - type: file
+      target: ../../catalog-entities/locations.yaml
 
     # Local example template
     #- type: file
