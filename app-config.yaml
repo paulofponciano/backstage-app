@@ -1,6 +1,6 @@
 app:
   title: Valcann Backstage App
-  baseUrl: https://a471dff9fc9cb477c9c9f037cbbd9669-cb5afe28c9501c48.elb.us-east-2.amazonaws.com
+  baseUrl: https://backstage.pauloponciano.digital
 
 organization:
   name: Valcann
@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: https://a471dff9fc9cb477c9c9f037cbbd9669-cb5afe28c9501c48.elb.us-east-2.amazonaws.com
+  baseUrl: https://backstage.pauloponciano.digital
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
@@ -22,7 +22,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: https://a471dff9fc9cb477c9c9f037cbbd9669-cb5afe28c9501c48.elb.us-east-2.amazonaws.com
+    origin: https://backstage.pauloponciano.digital
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
