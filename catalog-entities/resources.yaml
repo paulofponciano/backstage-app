@@ -5,8 +5,5 @@ metadata:
   description: A collection of all resources
 spec:
   targets:
-    - ./resource/pgdb.yaml
-    - ./resource/argocd.yaml
-    - ./resource/obc.yaml
     - ./resource/keycloak.yaml
     - ./resource/github.yaml

@@ -93,8 +93,8 @@ catalog:
     - allow: [Component, System, Group, Resource, Location, Template, API]
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    - type: file
-      target: ../../catalog-entities/locations.yaml
+    - type: url
+      target: https://github.com/paulofponciano/backstage-app/blob/main/catalog-entities/locations.yaml
 
     # Local example template
     #- type: file
