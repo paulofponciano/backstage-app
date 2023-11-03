@@ -7,5 +7,6 @@ spec:
   targets:
     - ./api/petstore-api.yaml
     - ./api/petstore-webhook-api.yaml
-    - ./api/petstore-oas.yaml
-    - ./api/petstore-webhook-oas.yaml
+    - ./api/petstore.oas.yaml
+    - ./api/petstore-webhook.oas.yaml
+    - ./api/spotify-api.yaml
