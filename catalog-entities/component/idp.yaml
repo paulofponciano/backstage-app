@@ -2,9 +2,9 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage-idp
-  title: Backstage App
+  title: Valcann Backstage App
   links:
-    - title: Backstage App
+    - title: Valcann Backstage App
       url: https://backstage.pauloponciano.digital/
   annotations:
     argocd/app-name: 'vnncld-idp'
