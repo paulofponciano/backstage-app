@@ -18,5 +18,3 @@ spec:
   system: vnncld-idp
   owner: vnncld-authors
   lifecycle: production
-  definition:
-    $openapi: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml
