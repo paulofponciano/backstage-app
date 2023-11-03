@@ -6,7 +6,7 @@ metadata:
 spec:
   type: grpc
   lifecycle: deprecated
-  owner: team-c
+  owner: vnncld-authors
   definition: |
     // Copyright 2015 gRPC authors.
     //

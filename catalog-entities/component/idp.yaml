@@ -16,8 +16,5 @@ spec:
   owner: vnncld-authors
   lifecycle: production
   dependsOn:
-    - resource:pgdb
-    - resource:argocd
-    - resource:obc
     - resource:keycloak
     - resource:github

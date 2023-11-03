@@ -6,7 +6,7 @@ metadata:
 spec:
   type: trpc
   lifecycle: experimental
-  owner: team-c
+  owner: vnncld-authors
   definition: |
     import { z } from 'zod';
     import { publicProcedure, router } from '../trpc';

@@ -17,5 +17,4 @@ spec:
   owner: vnncld-authors
   providesApis:
     - petstore
-    - streetlights
     - hello-world
