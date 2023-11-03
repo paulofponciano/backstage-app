@@ -5,4 +5,7 @@ metadata:
   description: A collection of all apis
 spec:
   targets:
-    - ./api/petstore.yaml
+    - ./api/petstore-api.yaml
+    - ./api/petstore-webhook-api.yaml
+    - ./api/petstore-oas.yaml
+    - ./api/petstore-webhook-oas.yaml
