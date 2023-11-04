@@ -400,7 +400,7 @@ metadata:
     backstage.io/kubernetes-id: eks-cluster
 spec:
   selector:
-    istio: ingressgateway # use istio default controller
+    istio: external
   servers:
   - port:
       number: 443
