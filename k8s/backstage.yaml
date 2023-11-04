@@ -29,6 +29,8 @@ spec:
                 name: backstage-secrets
             - secretRef:
                 name: github-auth-secrets
+            - secretRef:
+                name: eks-secrets
           env:
           - name: POSTGRES_PORT
             value: "5432"
