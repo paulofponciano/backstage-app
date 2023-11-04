@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eks-cluster
+  annotations:
+    backstage.io/kubernetes-id: eks-cluster
+spec:
+  lifecycle: staging
+  owner: vnncld-authors
+  type: service
