@@ -4,6 +4,9 @@ metadata:
   annotations:
     backstage.io/kubernetes-id: bookinfo
   name: bookinfo
+  tags:
+    - app
+    - k8s
 spec:
   lifecycle: staging
   owner: vnncld-authors
