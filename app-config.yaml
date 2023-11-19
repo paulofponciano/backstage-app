@@ -44,7 +44,7 @@ integrations:
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/getting-started/configuration#setting-up-a-github-integration
       #token: ${GITHUB_TOKEN}
-      token: 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
+      token: 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
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
@@ -107,7 +107,7 @@ kubernetes:
   clusterLocatorMethods:
     - type: 'config'
       clusters:
-        - url: https://418096DD544DB54956DF69C37CF72EA4.gr7.us-east-2.eks.amazonaws.com
+        - url: https://4CDFD590EC126793A88197B041246DF9.gr7.us-east-2.eks.amazonaws.com
           name: pegasus
           #authProvider: 'aws'
           authProvider: 'serviceAccount'
