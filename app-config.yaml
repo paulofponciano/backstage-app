@@ -89,6 +89,9 @@ auth:
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
+  defaultAuthor:
+    name: ":robot: [backstage-bot]"
+    email: paulofponciano@gmail.com
 
 catalog:
   import:
