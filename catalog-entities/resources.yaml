@@ -5,5 +5,4 @@ metadata:
   description: A collection of all resources
 spec:
   targets:
-    - ./resource/keycloak.yaml
-    - ./resource/github.yaml
+    - ./resource/*.yaml

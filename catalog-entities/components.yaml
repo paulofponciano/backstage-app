@@ -5,6 +5,4 @@ metadata:
   description: A collection of all components
 spec:
   targets:
-    - ./component/idp.yaml
-    - ./component/eks-cluster.yaml
-    - ./component/bookinfo.yaml
+    - ./component/*.yaml

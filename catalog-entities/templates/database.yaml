@@ -1,0 +1,110 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: database-template
+  title: RDS Database Template
+  description: Create a RDSInstance on AWS
+  tags:
+    - aws
+    - rds
+    - infra
+    - database
+    - resource
+spec:
+  owner: group:sre
+  type: resource
+
+  parameters:
+    - title: Provide some simple information
+      required:
+        - system
+        - lifecycle
+        - owner
+        
+      properties:
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            defaultKind: System
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        lifecycle:
+          title: Lifecycle
+          description: 'Application lifecycle'
+          type: string
+          default: experimental
+          enum:
+            - deprecated
+            - experimental
+            - production
+
+    - title: Infrastructure
+      properties:
+        env:
+          title: Environment
+          description: 'Environment to create resources'
+          type: string
+          default: dev
+          enum:
+            - dev
+            - stg
+            - prd
+        database:
+          title: Database Parameters
+          type: object
+          default: Postgres
+          properties:
+            type:
+              enum:
+              - MySQL
+              - Postgres
+        dryRun:
+          title: Only perform a dry run, don't publish anything
+          type: boolean
+          default: false
+
+  steps:
+    - id: fetch-template
+      name: Fetch RDS Templates
+      action: fetch:template
+      if: ${{ parameters.dryRun == false }}
+      input:
+        targetPath: ./rds
+        url: https://github.com/paulofponciano/backstage-app/tree/main/catalog-entities/skeleton/crossplane/rds
+        values:
+          system: ${{ parameters.system }}
+          owner: ${{ parameters.owner }}
+          env: ${{ parameters.env }}
+
+    - id: open-pr
+      name: "Open PR in GitOps Repository"
+      action: publish:github:pull-request
+      if: ${{ parameters.dryRun == false }}
+      input:
+        repoUrl: github.com?repo=gitops&owner=devxp-tech
+        branchName: create-${{ parameters.system }}-${{ parameters.env }}-db
+        title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-db'
+        description: |
+          # New project: ${{ parameters.system }}
+          ${{ parameters.description if parameters.description }}
+        sourcePath: rds
+        targetPath: apps
+
+  output:
+    links:
+      - title: Go to GitOps Pull Request
+        url: ${{ steps.open-pr.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}

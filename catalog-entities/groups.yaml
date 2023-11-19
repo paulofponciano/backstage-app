@@ -5,5 +5,4 @@ metadata:
   description: A collection of all groups
 spec:
   targets:
-    - ./group/vnncld-authors.yaml
-    - ./group/sre.yaml
+    - ./group/*.yaml

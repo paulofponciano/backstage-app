@@ -5,4 +5,4 @@ metadata:
   description: A collection of all apis
 spec:
   targets:
-    - ./api/spotify-api.yaml
+    - ./api/*.yaml
