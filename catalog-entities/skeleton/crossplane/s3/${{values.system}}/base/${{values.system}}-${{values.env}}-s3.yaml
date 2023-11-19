@@ -1,0 +1,15 @@
+---
+apiVersion: s3.aws.crossplane.io/v1beta1
+kind: Bucket
+metadata:
+  name: ${{values.system}}-${{values.env}}-s3
+  namespace: ${{values.system}}
+  labels:
+    backstage.io/kubernetes-id: ${{values.system}}
+spec:
+  forProvider:
+    acl: private
+    locationConstraint: us-east-1
+    objectLockEnabledForBucket: false
+  providerConfigRef:
+    name: default
