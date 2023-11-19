@@ -34,7 +34,7 @@ kind: Namespace
 metadata:
   name: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     istio-injection: enabled
 ---
@@ -47,7 +47,7 @@ metadata:
   name: details
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: details
     service: details
@@ -64,7 +64,7 @@ metadata:
   name: bookinfo-details
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     account: details
 ---
@@ -74,7 +74,7 @@ metadata:
   name: details-v1
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: details
     version: v1
@@ -109,7 +109,7 @@ metadata:
   name: ratings
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: ratings
     service: ratings
@@ -126,7 +126,7 @@ metadata:
   name: bookinfo-ratings
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     account: ratings
 ---
@@ -169,7 +169,7 @@ metadata:
   name: reviews
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: reviews
     service: reviews
@@ -186,7 +186,7 @@ metadata:
   name: bookinfo-reviews
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     account: reviews
 ---
@@ -196,7 +196,7 @@ metadata:
   name: reviews-v1
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: reviews
     version: v1
@@ -241,7 +241,7 @@ metadata:
   name: reviews-v2
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: reviews
     version: v2
@@ -286,7 +286,7 @@ metadata:
   name: reviews-v3
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: reviews
     version: v3
@@ -334,7 +334,7 @@ metadata:
   name: productpage
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     app: productpage
     service: productpage
@@ -351,7 +351,7 @@ metadata:
   name: bookinfo-productpage
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
   labels:
     account: productpage
 ---
@@ -397,7 +397,7 @@ metadata:
   name: bookinfo-gateway
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
 spec:
   selector:
     istio: external
@@ -415,7 +415,7 @@ metadata:
   name: bookinfo
   namespace: bookinfo
   annotations:
-    backstage.io/kubernetes-id: eks-cluster
+    backstage.io/kubernetes-id: bookinfo
 spec:
   hosts:
   - "bookinfo.pauloponciano.digital"

@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'k8s/**'
+      - 'catalog-entities/**'
 
 jobs:
   build:
