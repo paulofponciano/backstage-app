@@ -5,8 +5,4 @@ metadata:
   description: A collection of all apis
 spec:
   targets:
-    - ./api/petstore-api.yaml
-    - ./api/petstore-webhook-api.yaml
     - ./api/spotify-api.yaml
-    - ./api/hello-world-api.yaml
-    - ./api/hello-world-trpc-api.yaml

@@ -6,6 +6,5 @@ metadata:
 spec:
   targets:
     - ./component/idp.yaml
-    - ./component/petstore.yaml
     - ./component/eks-cluster.yaml
     - ./component/bookinfo.yaml

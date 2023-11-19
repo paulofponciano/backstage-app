@@ -9,5 +9,5 @@ metadata:
     - k8s
 spec:
   lifecycle: staging
-  owner: vnncld-authors
+  owner: sre
   type: service

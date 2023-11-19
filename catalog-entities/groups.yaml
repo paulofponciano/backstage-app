@@ -6,3 +6,4 @@ metadata:
 spec:
   targets:
     - ./group/vnncld-authors.yaml
+    - ./group/sre.yaml
