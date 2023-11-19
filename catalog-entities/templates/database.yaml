@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: database-template
   title: RDS Database Template
-  description: Create a RDSInstance on AWS
+  description: Create a RDS Instance on AWS (Crossplane)
   tags:
     - aws
     - rds
@@ -92,7 +92,7 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.dryRun == false }}
       input:
-        repoUrl: github.com?repo=gitops&owner=devxp-tech
+        repoUrl: github.com?repo=gitops&owner=paulofponciano
         branchName: create-${{ parameters.system }}-${{ parameters.env }}-db
         title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-db'
         description: |
