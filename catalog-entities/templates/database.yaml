@@ -92,7 +92,8 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.dryRun == false }}
       input:
-        repoUrl: github.com?repo=EKS-Crossplane-ArgoCD&owner=paulofponciano
+        #repoUrl: github.com?repo=EKS-Crossplane-ArgoCD&owner=paulofponciano
+        repoUrl: https://github.com/paulofponciano/EKS-Crossplane-ArgoCD
         branchName: create-${{ parameters.system }}-${{ parameters.env }}-db
         title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-db'
         description: |
