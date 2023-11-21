@@ -68,10 +68,10 @@ spec:
               enum:
               - us-east-1
               - us-east-2
-            type:
+            engine:
               enum:
-              - MySQL
-              - Postgres
+              - MySQL 8.0.33
+              - Postgres 15.4-R3
             size:
               enum:
               - db.t3.micro
