@@ -5,7 +5,7 @@ metadata:
   namespace: backstage
 spec:
   selector:
-    istio: external
+    istio: ingressgateway
   servers:
     - hosts:
         - backstage.pauloponciano.digital
