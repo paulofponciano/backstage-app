@@ -59,16 +59,23 @@ spec:
           enum:
             - dev
             - stg
-            - prd
         database:
           title: Database Parameters
           type: object
           default: Postgres
           properties:
+            region:
+              enum:
+              - us-east-1
+              - us-east-2
             type:
               enum:
               - MySQL
               - Postgres
+            size:
+              enum:
+              - db.t3.micro
+              - db.t3.small
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
