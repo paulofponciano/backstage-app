@@ -93,7 +93,7 @@ spec:
       if: ${{ parameters.dryRun == false }}
       input:
         repoUrl: github.com?repo=EKS-Crossplane-ArgoCD&owner=paulofponciano
-        branchName: create-${{ parameters.system }}-${{ parameters.env }}-db
+        branchName: create-${{ parameters.env }}-db
         title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-db'
         description: |
           # New project: ${{ parameters.system }}
