@@ -99,7 +99,7 @@ spec:
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
         sourcePath: rds
-        targetPath: apps
+        targetPath: deployed_infra
 
   output:
     links:
