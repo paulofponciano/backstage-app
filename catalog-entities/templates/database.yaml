@@ -59,6 +59,10 @@ spec:
           enum:
             - dev
             - stg
+        name:
+          title: Identifier
+          description: 'Resource identifier'
+          type: string
         database:
           title: Database Parameters
           type: object
