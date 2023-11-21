@@ -1,17 +1,16 @@
-#CLAIM
-apiVersion: database.aws.crossplane.io/v1beta1
-kind: RDSInstance
+# CLAIM
+---
+apiVersion: api.pauloponciano.pro/v1alpha1
+kind: CustomDatabase
 metadata:
-  name: ${{values.system}}-${{values.env}}-db
+  name: ${{values.identifier}}-${{values.env}}-db
+  namespace: environment-crossplane
 spec:
-  forProvider:
-    region: us-east-1
-    dbInstanceClass: db.t2.small
-    masterUsername: masteruser
-    allocatedStorage: 20
-    engine: postgres
-    engineVersion: "9.6"
-    skipFinalSnapshotBeforeDeletion: true
-  writeConnectionSecretToRef:
-    namespace: ${{values.system}}
-    name: ${{values.system}}-${{values.env}}-db
+  resourceConfig:
+    providerConfigName: aws
+    region: ${{values.region}}
+    size: ${{values.size}}
+    engine: ${{values.engine}}
+    tags:
+      automation-by: crossplane
+      ownerName: ${{values.owner}}

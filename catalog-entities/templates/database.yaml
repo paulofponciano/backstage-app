@@ -74,8 +74,10 @@ spec:
               - us-east-2
             engine:
               enum:
-              - MySQL 8.0.33
-              - Postgres 15.4-R3
+              - postgres
+            version:
+              enum:
+              - 15.4
             size:
               enum:
               - db.t3.micro
@@ -97,6 +99,11 @@ spec:
           system: ${{ parameters.system }}
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
+          identifier: ${{ parameters.identifier }}
+          region: ${{ parameters.region }}
+          size: ${{ parameters.size }}
+          engine: ${{ parameters.engine }}
+          version: ${{ parameters.version }}
 
     - id: open-pr
       name: "Open PR in GitOps Repository"
