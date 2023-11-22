@@ -77,7 +77,7 @@ spec:
               - mysql
             version:
               enum:
-              - "15.4"
+              - 15.4
             size:
               enum:
               - db.t3.micro
