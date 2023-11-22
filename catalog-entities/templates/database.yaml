@@ -13,7 +13,6 @@ metadata:
 spec:
   owner: group:sre
   type: resource
-
   parameters:
     - title: Provide some simple information
       required:
@@ -30,6 +29,7 @@ spec:
             allowedKinds:
               - System
             defaultKind: System
+            
         owner:
           title: Owner
           type: string
@@ -38,6 +38,7 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
@@ -47,10 +48,6 @@ spec:
             - deprecated
             - experimental
             - production
-
-    - title: Infrastructure
-      properties:
-      
         env:
           title: Environment
           description: 'Environment to create resources'
@@ -59,30 +56,35 @@ spec:
           enum:
             - dev
             - stg
-
         name:
           title: Identifier
           description: 'Resource identifier'
           type: string
 
-        database:
-          title: Database Parameters
+        region:
+          title: Region
           type: object
-          default: Postgres
-          properties:
-            region:
-              enum:
-              - us-east-2
-            engine:
-              enum:
-              - postgres
-            version:
-              enum:
-              - "15.4"
-            size:
-              enum:
-              - db.t3.micro
-              - db.t3.small
+          default: us-east-2
+          enum:
+            - us-east-2
+        engine:
+          title: DB Engine
+          type: object
+          default: postgres
+          enum:
+            - postgres
+        version:
+          title: DB Engine Version
+          type: object
+          enum:
+            - "15.4"
+        size:
+          title: DB Size
+          type: object
+          default: db.t3.micro
+          enum:
+            - db.t3.micro
+            - db.t3.small
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
@@ -101,10 +103,10 @@ spec:
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
           identifier: ${{ parameters.name }}
-          region: ${{ parameters.database.properties.region }}
-          size: ${{ parameters.database.properties.size }}
-          engine: ${{ parameters.database.properties.engine }}
-          version: ${{ parameters.database.properties.version }}
+          region: ${{ parameters.region }}
+          size: ${{ parameters.size }}
+          engine: ${{ parameters.engine }}
+          version: ${{ parameters.version }}
 
     - id: open-pr
       name: "Open PR in GitOps Repository"
