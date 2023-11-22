@@ -13,12 +13,14 @@ metadata:
 spec:
   owner: group:sre
   type: resource
+
   parameters:
     - title: Provide some simple information
       required:
         - system
         - lifecycle
         - owner
+
       properties:
         system:
           title: System
@@ -29,7 +31,6 @@ spec:
             allowedKinds:
               - System
             defaultKind: System
-            
         owner:
           title: Owner
           type: string
@@ -38,7 +39,6 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
@@ -48,6 +48,9 @@ spec:
             - deprecated
             - experimental
             - production
+
+    - title: Infrastructure
+      properties:
         env:
           title: Environment
           description: 'Environment to create resources'
@@ -60,31 +63,24 @@ spec:
           title: Identifier
           description: 'Resource identifier'
           type: string
-
-        region:
-          title: Region
+        database:
+          title: Database Parameters
           type: object
-          default: us-east-2
-          enum:
-            - us-east-2
-        engine:
-          title: DB Engine
-          type: object
-          default: postgres
-          enum:
-            - postgres
-        version:
-          title: DB Engine Version
-          type: object
-          enum:
-            - "15.4"
-        size:
-          title: DB Size
-          type: object
-          default: db.t3.micro
-          enum:
-            - db.t3.micro
-            - db.t3.small
+          default: Postgres
+          properties:
+            region:
+              enum:
+              - us-east-2
+            engine:
+              enum:
+              - postgres
+            version:
+              enum:
+              - "15.4"
+            size:
+              enum:
+              - db.t3.micro
+              - db.t3.small
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
@@ -102,11 +98,11 @@ spec:
           system: ${{ parameters.system }}
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
-          identifier: ${{ parameters.name }}
+          identifier: ${{ parameters.identifier }}
           region: ${{ parameters.region }}
-          size: ${{ parameters.size }}
-          engine: ${{ parameters.engine }}
-          version: ${{ parameters.version }}
+          size: ${{ parameters.database.size }}
+          engine: ${{ parameters.database.engine }}
+          version: ${{ parameters.database.version }}
 
     - id: open-pr
       name: "Open PR in GitOps Repository"
