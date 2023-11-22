@@ -16,7 +16,6 @@ spec:
     region: ${{values.region}}
     size: ${{values.size}}
     engine: ${{values.engine}}
-    version: "15.4"
     tags:
       automation-by: crossplane
       ownerName: ${{values.owner}}
