@@ -70,7 +70,6 @@ spec:
           properties:
             region:
               enum:
-              - us-east-1
               - us-east-2
             engine:
               enum:
@@ -99,11 +98,11 @@ spec:
           system: ${{ parameters.system }}
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
-          identifier: ${{ parameters.identifier }}
-          region: ${{ parameters.region }}
-          size: ${{ parameters.size }}
-          engine: ${{ parameters.engine }}
-          version: ${{ parameters.version }}
+          identifier: ${{ parameters.name }}
+          region: ${{ parameters.database.region }}
+          size: ${{ parameters.database.size }}
+          engine: ${{ parameters.database.engine }}
+          version: ${{ parameters.database.version }}
 
     - id: open-pr
       name: "Open PR in GitOps Repository"
