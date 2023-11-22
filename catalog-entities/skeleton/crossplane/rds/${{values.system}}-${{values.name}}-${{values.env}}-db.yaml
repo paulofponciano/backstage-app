@@ -1,7 +1,7 @@
 # CLAIM
 ---
 apiVersion: api.pauloponciano.digital/v1alpha1
-kind: CustomDatabaseClaim
+kind: CustomDatabase
 metadata:
   name: ${{values.name}}-${{values.env}}-db
   namespace: environment-crossplane
