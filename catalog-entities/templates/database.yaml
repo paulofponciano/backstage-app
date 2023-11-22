@@ -20,7 +20,7 @@ spec:
         - system
         - lifecycle
         - owner
-        
+
       properties:
         system:
           title: System

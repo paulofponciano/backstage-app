@@ -3,15 +3,15 @@
 apiVersion: api.pauloponciano.digital/v1alpha1
 kind: CustomDatabase
 metadata:
-  name: ${{values.identifier}}-${{values.env}}-db
+  name: ${{values.name}}-${{values.env}}-db
   namespace: environment-crossplane
 spec:
   resourceConfig:
     providerConfigName: aws
-    region: ${{values.region}}
-    size: ${{values.size}}
-    engine: ${{values.engine}}
-    version: ${{values.version}}
+    region: ${{values.database.region}}
+    size: ${{values.database.size}}
+    engine: ${{values.database.engine}}
+    version: ${{values.database.version}}
     tags:
       automation-by: crossplane
       ownerName: ${{values.owner}}
