@@ -5,6 +5,8 @@ kind: CustomDatabase
 metadata:
   name: ${{values.name}}-${{values.env}}-db
   namespace: environment-crossplane
+  labels:
+    backstage.io/kubernetes-id: rds
 spec:
   resourceConfig:
     providerConfigName: aws
