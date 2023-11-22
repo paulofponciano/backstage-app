@@ -8,10 +8,10 @@ metadata:
 spec:
   resourceConfig:
     providerConfigName: aws
-    region: ${{values.database.region}}
-    size: ${{values.database.size}}
-    engine: ${{values.database.engine}}
-    version: ${{values.database.version}}
+    region: ${{values.database.properties.region}}
+    size: ${{values.database.properties.size}}
+    engine: ${{values.database.properties.engine}}
+    version: ${{values.database.properties.version}}
     tags:
       automation-by: crossplane
       ownerName: ${{values.owner}}

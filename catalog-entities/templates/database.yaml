@@ -20,7 +20,6 @@ spec:
         - system
         - lifecycle
         - owner
-
       properties:
         system:
           title: System
@@ -51,6 +50,7 @@ spec:
 
     - title: Infrastructure
       properties:
+      
         env:
           title: Environment
           description: 'Environment to create resources'
@@ -59,10 +59,12 @@ spec:
           enum:
             - dev
             - stg
+
         name:
           title: Identifier
           description: 'Resource identifier'
           type: string
+
         database:
           title: Database Parameters
           type: object
