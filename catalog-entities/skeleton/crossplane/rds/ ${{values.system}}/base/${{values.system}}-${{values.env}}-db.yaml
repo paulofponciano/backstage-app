@@ -1,6 +1,6 @@
 # CLAIM
 ---
-apiVersion: api.pauloponciano.pro/v1alpha1
+apiVersion: api.pauloponciano.digital/v1alpha1
 kind: CustomDatabase
 metadata:
   name: ${{values.identifier}}-${{values.env}}-db
