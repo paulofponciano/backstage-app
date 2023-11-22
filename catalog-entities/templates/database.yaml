@@ -14,7 +14,6 @@ spec:
   owner: group:sre
   type: resource
   parameters:
-
     - title: Basic informations
       required:
         - system
@@ -47,7 +46,6 @@ spec:
             - deprecated
             - experimental
             - production
-
     - title: Infrastructure
       required:
         - env
@@ -65,7 +63,6 @@ spec:
           title: Identifier
           description: 'Resource identifier'
           type: string
-
         database:
           title: Database Parameters
           type: object
@@ -89,7 +86,6 @@ spec:
           title: Only perform a dry run, don't publish anything
           type: boolean
           default: false
-
   steps:
     - id: fetch-template
       name: Fetch RDS Templates
