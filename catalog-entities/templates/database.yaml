@@ -13,14 +13,12 @@ metadata:
 spec:
   owner: group:sre
   type: resource
-
   parameters:
     - title: Provide some simple information
       required:
         - system
         - lifecycle
         - owner
-
       properties:
         system:
           title: System
@@ -48,7 +46,6 @@ spec:
             - deprecated
             - experimental
             - production
-
     - title: Infrastructure
       properties:
         env:
@@ -74,6 +71,7 @@ spec:
             engine:
               enum:
               - postgres
+              - mysql
             version:
               enum:
               - "15.4"
