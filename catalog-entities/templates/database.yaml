@@ -76,7 +76,6 @@ spec:
               - postgres
               - mysql
             version:
-              type: string
               enum:
               - "15.4"
             size:
@@ -103,7 +102,7 @@ spec:
           region: ${{ parameters.database.region }}
           size: ${{ parameters.database.size }}
           engine: ${{ parameters.database.engine }}
-          version: ${{ parameters.database.version }}
+          version: "${{ parameters.database.version }}"
 
     - id: open-pr
       name: "Open PR in GitOps Repository"
