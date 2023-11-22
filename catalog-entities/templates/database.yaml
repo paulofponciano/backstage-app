@@ -49,6 +49,9 @@ spec:
             - production
 
     - title: Infrastructure
+      required:
+        - env
+        - name
       properties:
         env:
           title: Environment
