@@ -83,6 +83,17 @@ spec:
               enum:
               - db.t3.micro
               - db.t3.small
+          dependencies:
+            engine:
+              oneOf:
+                - properties:
+                engine:
+                  enum:
+                    - postgresql
+                engine version:
+                  type: "string"
+                  enum:
+                    - 15.4
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
