@@ -14,7 +14,7 @@ spec:
   owner: group:sre
   type: resource
   parameters:
-    - title: Provide some simple information
+    - title: Basic informations
       required:
         - system
         - lifecycle
