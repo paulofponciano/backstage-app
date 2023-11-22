@@ -76,6 +76,7 @@ spec:
               - postgres
               - mysql
             version:
+              type: string
               enum:
               - "15.4"
             size:
