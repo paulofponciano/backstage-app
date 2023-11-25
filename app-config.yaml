@@ -118,3 +118,7 @@ kubernetes:
           skipMetricsLookup: true
           serviceAccountToken: ${SA_TOKEN}
           caData: ${CA_DATA}
+          customResources:
+            - group: 'api.pauloponciano.digital'
+              apiVersion: 'v1alpha1'
+              plural: 'xcustomdatabases'
