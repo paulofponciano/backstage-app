@@ -110,7 +110,7 @@ kubernetes:
   clusterLocatorMethods:
     - type: 'config'
       clusters:
-        - url: https://4CDFD590EC126793A88197B041246DF9.gr7.us-east-2.eks.amazonaws.com
+        - url: https://655F54F822616573CBEDC23D3F5E673C.gr7.us-east-2.eks.amazonaws.com
           name: pegasus
           #authProvider: 'aws'
           authProvider: 'serviceAccount'
