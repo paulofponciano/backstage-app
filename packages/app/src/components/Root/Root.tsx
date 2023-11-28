@@ -23,7 +23,6 @@ import {
   SidebarSpace,
   useSidebarOpenState,
   Link,
-  GroupIcon,
   SidebarSubmenu,
   SidebarSubmenuItem,
 } from '@backstage/core-components';
