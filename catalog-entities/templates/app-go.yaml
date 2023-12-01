@@ -6,9 +6,7 @@ metadata:
   description: Create a new Golang App
 
   tags:
-    - go
     - golang
-    - recommended
     - website
     - component
 spec:
