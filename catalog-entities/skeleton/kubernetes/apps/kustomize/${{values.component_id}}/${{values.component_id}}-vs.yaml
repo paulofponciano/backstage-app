@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ${{values.component_id}}-vs
+  namespace: ${{values.component_id}}
+  labels:
+    app: ${{values.component_id}}
+    version: 0.0.1
+    backstage.io/kubernetes-id: ${{values.component_id}}
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - ${{values.component_id}}.pauloponciano.digital
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: ${{values.component_id}}-service
+      weight: 100

@@ -1,0 +1,186 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: golang-template
+  title: Golang Template
+  description: Create a new Golang App
+
+  tags:
+    - go
+    - golang
+    - recommended
+    - website
+    - component
+spec:
+  owner: group:sre-team
+  type: component
+
+  parameters:
+    - title: Provide some simple information
+      required:
+        - component_id
+        - system
+        - lifecycle
+        - owner
+        - type
+      properties:
+        component_id:
+          title: Name
+          type: string
+          pattern: "^([a-z0-9\\-]+)$"
+          description: Unique name of the component
+          ui:field: EntityNamePicker
+          ui:autofocus: true
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            defaultKind: System
+        lifecycle:
+          title: Lifecycle
+          description: 'Application lifecycle'
+          type: string
+          default: experimental
+          enum:
+            - deprecated
+            - experimental
+            - production
+        type:
+          title: Type
+          description: 'Application type'
+          type: string
+          default: service
+          enum:
+            - service
+            - website
+            - library
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+            allowedOwners:
+              - paulofponciano
+
+    - title: Infrastructure
+      properties:
+        kube:
+          title: Create Kubernetes App
+          description: Checking this will also create Kubernetes App
+          type: boolean
+          default: false
+        env:
+          title: Environment
+          description: 'Environment to create resources'
+          type: string
+          default: dev
+          enum:
+            - dev
+            - stg
+            - prd
+        dryRun:
+          title: Only perform a dry run, don't publish anything
+          type: boolean
+          default: false
+
+  steps:
+    - id: template
+      name: Fetch Application Template on GitHub Repo
+      action: fetch:template
+      cookiecutterCompat: true
+      input:
+        url: https://github.com/paulofponciano/go-template-backstage
+        values:
+          component_id: ${{ parameters.component_id }}
+          system: ${{ parameters.system }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+          lifecycle: ${{ parameters.lifecycle }}
+          type: ${{ parameters.type }}
+          env: ${{ parameters.env}}
+
+    - id: publish
+      name: Publish Application
+      action: publish:github
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
+        repoVisibility: public
+        collaborators:
+          - team: sre-team
+            access: maintain
+          - team: ${{ parameters.owner }}
+            access: push
+
+    - id: fetch-kube
+      name: Fetch Kubernetes Template
+      action: fetch:template
+      if: ${{ parameters.kube == true }}
+      input:
+        targetPath: ./kube
+        url: https://github.com/paulofponciano/backstage-app/tree/main/catalog-entities/skeleton/kubernetes/apps/kustomize
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+
+    - id: kube-pr
+      name: "Open PR in GitOps Repository"
+      action: publish:github:pull-request
+      if: ${{ parameters.kube == true }}
+      input:
+        repoUrl: github.com?repo=EKS-Crossplane-ArgoCD&owner=paulofponciano
+        branchName: create-${{ parameters.component_id }}
+        title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
+        description: |
+          # New project: ${{ parameters.component_id }}
+          ${{ parameters.description if parameters.description }}
+        sourcePath: kube
+        targetPath: deployed_apps
+
+    - id: register
+      name: Register Application in Catalog
+      action: catalog:register
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
+  output:
+    links:
+      - title: Go to Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Go to GitOps Pull Request
+        url: ${{ steps.kube-pr.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
