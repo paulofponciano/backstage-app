@@ -110,7 +110,7 @@ spec:
       action: fetch:template
       cookiecutterCompat: true
       input:
-        url: https://github.com/paulofponciano/go-template-backstage
+        url: https://github.com/paulofponciano-idp/go-template-backstage
         values:
           component_id: ${{ parameters.component_id }}
           system: ${{ parameters.system }}
