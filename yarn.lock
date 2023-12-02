@@ -3081,6 +3081,27 @@
     luxon "^3.0.0"
     react-use "^17.2.4"
 
+"@backstage/plugin-github-actions@^0.6.8":
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-github-actions/-/plugin-github-actions-0.6.8.tgz#fa419cf873b2cea5a2a54b12ae818543ad0ab90d"
+  integrity sha512-WH5RWSt/CddhF1UjPY2IvfGwwAAFKPPJF+F3QS/OaLQAccMS6/cP98JUG7K3GdIpQAnA5Jrm7x/Iz2dI7GkqkA==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.3"
+    "@backstage/core-components" "^0.13.8"
+    "@backstage/core-plugin-api" "^1.8.0"
+    "@backstage/integration" "^1.7.2"
+    "@backstage/integration-react" "^1.1.21"
+    "@backstage/plugin-catalog-react" "^1.9.1"
+    "@backstage/theme" "^0.4.4"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@octokit/rest" "^19.0.3"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    git-url-parse "^13.0.0"
+    luxon "^3.0.0"
+    react-use "^17.2.4"
+
 "@backstage/plugin-graphiql@^0.2.55":
   version "0.2.55"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-graphiql/-/plugin-graphiql-0.2.55.tgz#e472f6da6a0a9a8c31bc0298225614f039f756b5"
@@ -8869,6 +8890,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/plugin-catalog-import" "^0.10.1"
     "@backstage/plugin-catalog-react" "^1.8.5"
     "@backstage/plugin-github-actions" "^0.6.6"
+    "@backstage/plugin-home" "^0.5.11"
     "@backstage/plugin-kubernetes" "^0.11.0"
     "@backstage/plugin-org" "^0.6.15"
     "@backstage/plugin-permission-react" "^0.4.16"
