@@ -132,6 +132,16 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
         repoVisibility: public
+        deleteBranchOnMerge: true
+        allowMergeCommit: false
+        allowSquashMerge: true
+        allowRebaseMerge: false
+        protectEnforceAdmins: false
+        dismissStaleReviews: true
+        requiredApprovingReviewCount: 2
+        requireCodeOwnerReviews: true
+        requireBranchesToBeUpToDate: true
+        requiredConversationResolution: true
         collaborators:
           - team: sre-team
             access: maintain
