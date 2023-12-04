@@ -10,7 +10,7 @@ metadata:
     - website
     - component
 spec:
-  owner: group:sre-team
+  owner: group:sre
   type: component
 
   parameters:
@@ -143,7 +143,7 @@ spec:
         requireBranchesToBeUpToDate: true
         requiredConversationResolution: true
         collaborators:
-          - team: sre-team
+          - team: sre
             access: maintain
           - team: ${{ parameters.owner }}
             access: push
