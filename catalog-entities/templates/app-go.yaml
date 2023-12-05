@@ -111,6 +111,8 @@ spec:
       cookiecutterCompat: true
       input:
         url: https://github.com/paulofponciano-idp/go-template-backstage
+        copyWithoutTemplating:
+          - .github/workflows/*
         values:
           component_id: ${{ parameters.component_id }}
           system: ${{ parameters.system }}
