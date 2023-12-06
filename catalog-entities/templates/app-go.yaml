@@ -158,7 +158,7 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
-        repoUrl: github.com?repo=EKS-Crossplane-ArgoCD&owner=paulofponciano
+        repoUrl: github.com?repo=gitops&owner=paulofponciano-idp
         branchName: create-${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
         description: |
