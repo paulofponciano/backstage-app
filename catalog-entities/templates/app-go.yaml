@@ -178,9 +178,9 @@ spec:
   output:
     links:
       - title: Go to Repository
-        url: ${{ steps.publish.output.remoteUrl }}
+        url: ${{ steps['publish'].output.repoContentsUrl }}
       - title: Go to GitOps Pull Request
         url: ${{ steps.kube-pr.output.remoteUrl }}
       - title: Open in catalog
         icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}
+        entityRef: ${{ steps['register'].output.entityRef }}
