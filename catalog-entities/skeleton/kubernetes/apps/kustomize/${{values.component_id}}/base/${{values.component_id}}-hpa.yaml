@@ -2,6 +2,7 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: ${{values.component_id}}-hpa
+  namespace: ${{values.component_id}}
   labels:
     app: ${{values.component_id}}
     version: 0.0.1
