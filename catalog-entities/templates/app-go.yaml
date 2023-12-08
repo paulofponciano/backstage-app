@@ -164,8 +164,16 @@ spec:
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
-        sourcePath: kube
+        sourcePath: kubernetes
         targetPath: deployed_apps
+
+    - id: register
+      name: Register Application in Catalog
+      action: catalog:register
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
 
   output:
     links:
