@@ -164,7 +164,7 @@ spec:
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
-        sourcePath: kubernetes
+        sourcePath: kube
         targetPath: deployed_apps
 
     - id: register
