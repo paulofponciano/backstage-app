@@ -2,18 +2,19 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage-idp
-  title: Valcann Backstage App
+  title: Community Backstage App
   links:
-    - title: Valcann Backstage App
+    - title: Community Backstage App
       url: https://backstage.pauloponciano.digital/
   annotations:
-    argocd/app-name: 'vnncld-idp'
-    backstage.io/kubernetes-id: 'vnncld-idp'
+    github.com/project-slug: paulofponciano/backstage-app
+    argocd/app-name: 'community-idp'
+    backstage.io/kubernetes-id: 'community-idp'
     backstage.io/kubernetes-namespace: backstage
 spec:
   type: website
-  system: vnncld-idp
-  owner: vnncld-authors
+  system: community-idp
+  owner: community-authors
   lifecycle: production
   dependsOn:
     - resource:keycloak
