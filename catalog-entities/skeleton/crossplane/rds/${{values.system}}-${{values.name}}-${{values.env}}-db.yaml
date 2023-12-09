@@ -3,7 +3,7 @@
 apiVersion: api.pauloponciano.digital/v1alpha1
 kind: CustomDatabase
 metadata:
-  name: ${{values.name}}-${{values.env}}-db
+  name: ${{values.name}}-${{values.env}}-${{values.engine}}-db
   namespace: environment-crossplane
   labels:
     backstage.io/kubernetes-id: ${{values.name}}-rds
