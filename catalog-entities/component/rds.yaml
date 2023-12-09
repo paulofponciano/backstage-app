@@ -10,5 +10,6 @@ metadata:
     - aws
 spec:
   lifecycle: staging
+  system: community-idp
   owner: sre
   type: service
