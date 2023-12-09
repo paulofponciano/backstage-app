@@ -120,3 +120,6 @@ kubernetes:
             - group: 'api.pauloponciano.digital' # Crossplane
               apiVersion: 'v1alpha1'
               plural: 'xcustomdatabases'
+            - group: 'api.pauloponciano.digital' # Crossplane
+              apiVersion: 'v1alpha1'
+              plural: 'xcustomorders'
