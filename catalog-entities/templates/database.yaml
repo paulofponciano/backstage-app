@@ -106,7 +106,7 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.dryRun == false }}
       input:
-        repoUrl: github.com?repo=EKS-Crossplane-ArgoCD&owner=paulofponciano
+        repoUrl: github.com?repo=gitops&owner=paulofponciano-idp
         branchName: create-${{ parameters.name }}-${{ parameters.env }}-db
         title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.name }}-${{ parameters.env }}-db'
         description: |
@@ -115,10 +115,20 @@ spec:
         sourcePath: rds
         targetPath: deployed_infra
 
+    - id: register
+      name: Register Resource in Catalog
+      action: catalog:register
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
   output:
     links:
+      - title: Go to Repository
+        url: ${{ steps['publish'].output.repoContentsUrl }}
       - title: Go to GitOps Pull Request
-        url: ${{ steps.open-pr.output.remoteUrl }}
+        url: ${{ steps.kube-pr.output.remoteUrl }}
       - title: Open in catalog
         icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}
+        entityRef: ${{ steps['register'].output.entityRef }}
