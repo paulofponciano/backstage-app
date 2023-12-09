@@ -4,6 +4,9 @@ metadata:
   name: eks-cluster
   annotations:
     backstage.io/kubernetes-id: eks-cluster
+  tags:
+    - crossplane
+    - k8s
 spec:
   lifecycle: staging
   owner: community-authors

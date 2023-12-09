@@ -11,6 +11,9 @@ metadata:
     argocd/app-name: 'community-idp'
     backstage.io/kubernetes-id: 'community-idp'
     backstage.io/kubernetes-namespace: backstage
+  tags:
+    - backstage
+    - idp
 spec:
   type: website
   system: community-idp
