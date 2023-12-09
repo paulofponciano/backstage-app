@@ -115,14 +115,6 @@ spec:
         sourcePath: rds
         targetPath: deployed_infra
 
-    - id: register
-      name: Register Resource in Catalog
-      action: catalog:register
-      if: ${{ parameters.dryRun !== true }}
-      input:
-        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
-
   output:
     links:
       - title: Go to Repository
