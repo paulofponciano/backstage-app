@@ -6,5 +6,5 @@ metadata:
     backstage.io/kubernetes-id: eks-cluster
 spec:
   lifecycle: staging
-  owner: vnncld-authors
+  owner: community-authors
   type: service

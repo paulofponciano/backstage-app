@@ -11,5 +11,5 @@ metadata:
 spec:
   type: repository
   lifecycle: production
-  owner: vnncld-authors
-  system: vnncld-idp
+  owner: community-authors
+  system: community-idp
