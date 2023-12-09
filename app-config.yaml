@@ -111,13 +111,12 @@ kubernetes:
       clusters:
         - url: https://655F54F822616573CBEDC23D3F5E673C.gr7.us-east-2.eks.amazonaws.com
           name: pegasus
-          #authProvider: 'aws'
           authProvider: 'serviceAccount'
           skipTLSVerify: false
           skipMetricsLookup: true
           serviceAccountToken: ${SA_TOKEN}
           caData: ${CA_DATA}
           customResources:
-            - group: 'api.pauloponciano.digital' #Crossplane
+            - group: 'api.pauloponciano.digital' # Crossplane
               apiVersion: 'v1alpha1'
               plural: 'xcustomdatabases'
