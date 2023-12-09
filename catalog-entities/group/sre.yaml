@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: sre
-  title: Valcann SRE Team
+  title: Community SRE Team
 spec:
   type: team
   children: []
