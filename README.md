@@ -8,16 +8,15 @@ Running on Amazon EKS !
 
 Backstage extra plugins used:
 
+  https://backstage.io/docs/features/kubernetes/installation
+  https://backstage.io/docs/reference/integration-aws-node/
+  https://backstage.io/docs/getting-started/homepage/
+
 ```sh
 yarn add --cwd packages/backend @backstage/plugin-kubernetes-backend
 yarn add --cwd packages/app @backstage/plugin-kubernetes
-  https://backstage.io/docs/features/kubernetes/installation
-
-yarn add --cwd packages/app 
-  https://backstage.io/docs/reference/integration-aws-node/
-
-yarn add --cwd packages/app 
-  https://backstage.io/docs/getting-started/homepage/
+yarn add --cwd packages/app @backstage/integration-aws-node
+yarn add --cwd packages/app @backstage/plugin-home
 ```
 
 Secrets needed for k8s (https://github.com/paulofponciano/backstage-app/tree/main/k8s):
