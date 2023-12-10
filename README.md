@@ -6,7 +6,7 @@ This is your newly scaffolded Backstage App, Good Luck!
 Running on Amazon EKS !
 ```
 
-Secrets needed for k8s:
+Secrets needed for k8s (https://github.com/paulofponciano/backstage-app/tree/main/k8s):
 
 ```sh
 github-auth-secrets
