@@ -6,6 +6,8 @@ This is your newly scaffolded Backstage App, Good Luck!
 Running on Amazon EKS !
 ```
 
+Amazon EKS setup with terraform -> https://github.com/paulofponciano/EKS-Crossplane-ArgoCD.git
+
 Backstage extra plugins used:
 
   https://backstage.io/docs/features/kubernetes/installation,
