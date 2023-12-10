@@ -6,6 +6,28 @@ This is your newly scaffolded Backstage App, Good Luck!
 Running on Amazon EKS !
 ```
 
+Secrets needed for k8s:
+
+```sh
+github-auth-secrets
+  AUTH_GITHUB_CLIENT_ID
+  AUTH_GITHUB_CLIENT_SECRET
+
+eks-secrets
+  SA_TOKEN
+  CA_DATA
+
+backstage-secrets
+  GITHUB_TOKEN
+
+postgres-secrets
+  POSTGRES_USER
+  POSTGRES_PASSWORD
+
+backstage-ingestion
+  token
+```
+
 Token for backstage ingestion k8s plugin:
 
 ```sh
@@ -23,3 +45,4 @@ type: kubernetes.io/service-account-token
 EOF
 kubectl -n kube-system get secret backstage-ingestion -o go-template='{{.data.token | base64decode}}'
 ```
+
