@@ -8,8 +8,8 @@ Running on Amazon EKS !
 
 Backstage extra plugins used:
 
-  https://backstage.io/docs/features/kubernetes/installation
-  https://backstage.io/docs/reference/integration-aws-node/
+  https://backstage.io/docs/features/kubernetes/installation,
+  https://backstage.io/docs/reference/integration-aws-node/,
   https://backstage.io/docs/getting-started/homepage/
 
 ```sh
