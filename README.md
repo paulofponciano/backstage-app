@@ -6,6 +6,20 @@ This is your newly scaffolded Backstage App, Good Luck!
 Running on Amazon EKS !
 ```
 
+Backstage extra plugins used:
+
+```sh
+yarn add --cwd packages/backend @backstage/plugin-kubernetes-backend
+yarn add --cwd packages/app @backstage/plugin-kubernetes
+  https://backstage.io/docs/features/kubernetes/installation
+
+yarn add --cwd packages/app 
+  https://backstage.io/docs/reference/integration-aws-node/
+
+yarn add --cwd packages/app 
+  https://backstage.io/docs/getting-started/homepage/
+```
+
 Secrets needed for k8s (https://github.com/paulofponciano/backstage-app/tree/main/k8s):
 
 ```sh
