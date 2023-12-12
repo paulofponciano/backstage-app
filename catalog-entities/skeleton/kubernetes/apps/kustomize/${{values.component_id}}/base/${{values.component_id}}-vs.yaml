@@ -1,3 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ${{values.component_id}}-gw
+  namespace: ${{values.component_id}}
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - ${{values.component_id}}.pauloponciano.digital
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - ${{values.component_id}}.pauloponciano.digital
+      port:
+        name: https-workloads
+        number: 443
+        protocol: HTTP
+      tls:
+        mode: PASSTHROUGH
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -10,7 +35,7 @@ metadata:
     backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
   gateways:
-  - istio-system/istio-ingressgateway
+  - ${{values.component_id}}-gw
   hosts:
   - ${{values.component_id}}.pauloponciano.digital
   http:
