@@ -105,7 +105,19 @@ catalog:
     #     - allow: [User, Group]
 
 kubernetes:
-  # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://api-server-endpoint.gr7.us-east-2.eks.amazonaws.com
+          name: pegasus
+          authProvider: 'serviceAccount'
+          skipTLSVerify: false
+          skipMetricsLookup: true
+          serviceAccountToken: ${SA_TOKEN}
+          caData: ${CA_DATA}
+# see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
 
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework
 permission:
