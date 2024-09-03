@@ -1,0 +1,43 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: backstage-gateway
+  namespace: backstage
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - backstage.pauloponciano.digital
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - backstage.pauloponciano.digital
+      port:
+        name: https-workloads
+        number: 443
+        protocol: HTTP
+      tls:
+        mode: PASSTHROUGH
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: backstage
+  namespace: backstage
+spec:
+  gateways:
+    - backstage-gateway
+  hosts:
+    - backstage.pauloponciano.digital
+  http:
+    - route:
+        - destination:
+            host: backstage.backstage.svc.cluster.local
+            port:
+              number: 80
+          weight: 100
