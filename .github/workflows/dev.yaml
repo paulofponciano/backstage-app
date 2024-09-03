@@ -1,8 +1,8 @@
-name: Main Master Build
+name: Dev Build
 
 on:
   push:
-    branches: [main]
+    branches: [v1.30.4]
     paths-ignore:
       - 'k8s/**'
       - 'catalog-entities/**'
@@ -68,4 +68,4 @@ jobs:
           context: .
           file: packages/backend/Dockerfile
           push: true
-          tags: paulofponciano/backstage:${{ github.sha }}, paulofponciano/backstage:latest
+          tags: paulofponciano/backstage-app:v1.30.4, paulofponciano/backstage-app:latest
