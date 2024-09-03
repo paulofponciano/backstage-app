@@ -1,0 +1,4 @@
+# Sensitive credentials
+*-credentials.yaml
+*-secrets.yaml
+*_secrets.yaml
