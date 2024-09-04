@@ -25,6 +25,8 @@ import { apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
+import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { SignInPage } from '@backstage/core-components';
 
 import {
   AlertDisplay,
@@ -57,7 +59,17 @@ const app = createApp({
     });
   },
   components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
+    SignInPage: props => 
+      <SignInPage
+        {...props}
+        auto
+        provider={{
+          id: 'github-auth-provider',
+          title: 'GitHub',
+          message: 'Sign in using GitHub',
+          apiRef: githubAuthApiRef,
+        }}
+      />,
   },
 });
 
