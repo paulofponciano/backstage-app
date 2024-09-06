@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{values.component_id}}
+  namespace: ${{values.component_id}}
+  labels:
+    app: ${{values.component_id}}
+    version: 0.0.1
+    backstage.io/kubernetes-id: ${{values.component_id}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${{values.component_id}}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ${{values.component_id}}
+        version: 0.0.1
+        backstage.io/kubernetes-id: ${{values.component_id}}
+      annotations:
+        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyMemoryLimit: "128Mi"        
+    spec:
+      containers:
+      - name: ${{values.component_id}}
+        image: webgo
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/readiness
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/liveness
+          initialDelaySeconds: 3
+          periodSeconds: 15

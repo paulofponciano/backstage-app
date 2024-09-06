@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: github
+  title: GitHub Backstage App repository
+  description: Deployment manifests and code GitHub.
+  links:
+    - url: https://github.com/paulofponciano/backstage-app
+      title: GitHub Repository
+      icon: web
+spec:
+  type: repository
+  lifecycle: production
+  owner: community-authors
+  system: community-idp

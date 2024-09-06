@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eks-cluster
+  annotations:
+    backstage.io/kubernetes-id: eks-cluster
+  tags:
+    - crossplane
+    - k8s
+spec:
+  lifecycle: staging
+  system: community-idp
+  owner: community-authors
+  type: service

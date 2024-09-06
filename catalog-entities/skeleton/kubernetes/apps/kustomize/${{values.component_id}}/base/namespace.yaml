@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${{values.component_id}}
+  labels:
+    kubernetes.io/metadata.name: ${{values.component_id}}
+    backstage.io/kubernetes-id: ${{values.component_id}}
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes

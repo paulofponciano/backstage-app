@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: community-authors
+  title: Community Authors
+spec:
+  type: team
+  children: []

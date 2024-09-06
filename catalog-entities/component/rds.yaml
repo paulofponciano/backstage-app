@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  annotations:
+    backstage.io/kubernetes-id: rds
+  name: rds
+  tags:
+    - rds
+    - crossplane
+    - aws
+spec:
+  lifecycle: staging
+  system: community-idp
+  owner: sre
+  type: service

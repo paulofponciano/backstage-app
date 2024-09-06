@@ -1,0 +1,7 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: community-idp
+  title: Community-IDP
+spec:
+  owner: community-authors

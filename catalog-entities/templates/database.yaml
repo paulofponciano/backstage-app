@@ -1,0 +1,126 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: database-template
+  title: RDS Database Template
+  description: Create a RDS Instance on AWS (Crossplane)
+  tags:
+    - aws
+    - rds
+    - infra
+    - database
+    - resource
+spec:
+  owner: group:sre
+  type: resource
+  parameters:
+    - title: Basic informations
+      required:
+        - system
+        - lifecycle
+        - owner
+      properties:
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            defaultKind: System
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        lifecycle:
+          title: Lifecycle
+          description: 'Application lifecycle'
+          type: string
+          default: experimental
+          enum:
+            - deprecated
+            - experimental
+            - production
+    - title: Infrastructure
+      required:
+        - env
+        - name
+        - database
+      properties:
+        env:
+          title: Environment
+          description: 'Environment to create resources'
+          type: string
+          default: dev
+          enum:
+            - dev
+            - stg
+        name:
+          title: Identifier
+          description: 'Resource identifier'
+          type: string
+        database:
+          title: Database Parameters
+          type: object
+          default: Postgres
+          properties:
+            region:
+              enum:
+              - us-east-2
+            engine:
+              enum:
+              - postgres
+              - mysql
+            size:
+              enum:
+              - db.t3.micro
+              - db.t3.small
+        dryRun:
+          title: Only perform a dry run, don't publish anything
+          type: boolean
+          default: false
+  steps:
+    - id: fetch-template
+      name: Fetch RDS Templates
+      action: fetch:template
+      if: ${{ parameters.dryRun == false }}
+      input:
+        targetPath: ./rds
+        url: https://github.com/paulofponciano/backstage-app/tree/main/catalog-entities/skeleton/crossplane/rds
+        values:
+          system: ${{ parameters.system }}
+          owner: ${{ parameters.owner }}
+          env: ${{ parameters.env }}
+          name: ${{ parameters.name }}
+          region: ${{ parameters.database.region }}
+          size: ${{ parameters.database.size }}
+          engine: ${{ parameters.database.engine }}
+
+    - id: open-pr
+      name: "Open PR in GitOps Repository"
+      action: publish:github:pull-request
+      if: ${{ parameters.dryRun == false }}
+      input:
+        repoUrl: github.com?repo=gitops&owner=paulofponciano-idp
+        branchName: create-${{ parameters.name }}-${{ parameters.env }}-db
+        title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.name }}-${{ parameters.env }}-db'
+        description: |
+          # New project: ${{ parameters.system }}
+          ${{ parameters.description if parameters.description }}
+        sourcePath: rds
+        targetPath: deployed_infra
+
+  output:
+    links:
+      - title: Go to Repository
+        url: ${{ steps['publish'].output.repoContentsUrl }}
+      - title: Go to GitOps Pull Request
+        url: ${{ steps.kube-pr.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
