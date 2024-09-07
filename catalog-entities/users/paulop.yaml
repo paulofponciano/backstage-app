@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: paulop
+spec:
+  profile:
+    displayName: Paulo Ponciano
+    email: paulofponciano@gmail.com
+    picture: https://api.dicebear.com/7.x/avataaars/svg?seed=Leo&backgroundColor=transparent
+  memberOf: [sre]
