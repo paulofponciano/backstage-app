@@ -11,7 +11,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: paulofponciano@gmail.com
+  name: paulofponciano
 spec:
   profile:
     displayName: Paulo Ponciano
