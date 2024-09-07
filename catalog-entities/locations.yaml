@@ -8,5 +8,5 @@ spec:
     - ./apis.yaml
     - ./components.yaml
     - ./systems.yaml
-    - ./groups.yaml
+    - ../groups.yaml
     - ./resources.yaml
