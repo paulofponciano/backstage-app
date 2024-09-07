@@ -10,4 +10,3 @@ spec:
     - ./systems.yaml
     - ./groups.yaml
     - ./resources.yaml
-    - ./users.yaml
