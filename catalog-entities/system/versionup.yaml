@@ -1,0 +1,7 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: versionup
+  title: VersionUp
+spec:
+  owner: sre

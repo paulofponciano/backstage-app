@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: hello-world
+  description: The Hello World web API
+  tags:
+    - python
+    - fastapi
+    - rest
+spec:
+  type: openapi
+  system: versionup
+  lifecycle: experimental
+  owner: sre
+  definition:
+    $text: https://github.com/APIs-guru/openapi-directory/blob/dab6854d4d599aafb0eb36e6c7ae1fe0c37509b7/APIs/spotify.com/2021.4.2/openapi.yaml

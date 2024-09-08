@@ -1,0 +1,10 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-fastapi-template
+  title: FastAPI Template
+  description: Create a new FastAPI App
+  tags:
+    - python
+    - service
+    - component
