@@ -11,3 +11,4 @@ spec:
     - ./group/*.yaml
     - ./users/*.yaml
     - ./resources.yaml
+    - ./templates/*.yaml
