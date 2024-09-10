@@ -52,4 +52,9 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 // kubernetes
 backend.add(import('@backstage/plugin-kubernetes-backend/alpha'));
 
+// scaffolder plugin
+backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));
+backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
+
+
 backend.start();
