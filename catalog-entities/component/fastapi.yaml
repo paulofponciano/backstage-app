@@ -6,10 +6,14 @@ metadata:
   name: FastAPI
   tags:
     - k8s
+  links:
+    - url: https://fastapi.tiangolo.com/
+      title: Officinal FastAPI Documentation
 spec:
   lifecycle: experimental
   system: versionup
   owner: sre
   type: service
   providesApis:
-  - hello-world
+    - hello-world
+  
