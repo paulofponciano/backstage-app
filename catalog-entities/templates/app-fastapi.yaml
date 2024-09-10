@@ -57,3 +57,59 @@ spec:
           default: service
           enum:
             - service
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+            allowedOwners:
+              - pegasus-idp
+  steps:
+    - id: template
+      name: Fetch Application Template on GitHub Repo
+      action: fetch:template
+      cookiecutterCompat: true
+      input:
+        url: https://github.com/pegasus-idp/python-fastapi-template
+        copyWithoutTemplating:
+          - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          system: ${{ parameters.system }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+          lifecycle: ${{ parameters.lifecycle }}
+          type: ${{ parameters.type }}
+          env: ${{ parameters.env}}
+
+    - id: publish
+      name: Publish Application
+      action: publish:github
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
+        repoVisibility: public
+        collaborators:
+          - team: sre
+            access: maintain
+          - team: ${{ parameters.owner }}
+            access: push
