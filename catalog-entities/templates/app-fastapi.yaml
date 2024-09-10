@@ -8,52 +8,52 @@ metadata:
     - python
     - service
     - component
-  spec:
-    owner: group:sre
-    type: component
+spec:
+  owner: group:sre
+  type: component
 
-    parameters:
-      - title: Provide some simple information
-        required:
-          - component_id
-          - system
-          - lifecycle
-          - owner
-          - type
-        properties:
-          component_id:
-            title: Name
-            type: string
-            pattern: "^([a-z0-9\\-]+)$"
-            description: Unique name of the component
-            ui:field: EntityNamePicker
-            ui:autofocus: true
-          description:
-            title: Description
-            type: string
-            description: Help others understand what this service is for.
-          system:
-            title: System
-            type: string
-            description: System of the component
-            ui:field: EntityPicker
-            ui:options:
-              allowedKinds:
-                - System
-              defaultKind: System
-          lifecycle:
-            title: Lifecycle
-            description: 'Application lifecycle'
-            type: string
-            default: experimental
-            enum:
-              - deprecated
-              - experimental
-              - production
-          type:
-            title: Type
-            description: 'Application type'
-            type: string
-            default: service
-            enum:
-              - service
+  parameters:
+    - title: Provide some simple information
+      required:
+        - component_id
+        - system
+        - lifecycle
+        - owner
+        - type
+      properties:
+        component_id:
+          title: Name
+          type: string
+          pattern: "^([a-z0-9\\-]+)$"
+          description: Unique name of the component
+          ui:field: EntityNamePicker
+          ui:autofocus: true
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this service is for.
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            defaultKind: System
+        lifecycle:
+          title: Lifecycle
+          description: 'Application lifecycle'
+          type: string
+          default: experimental
+          enum:
+            - deprecated
+            - experimental
+            - production
+        type:
+          title: Type
+          description: 'Application type'
+          type: string
+          default: service
+          enum:
+            - service
