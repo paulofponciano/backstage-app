@@ -113,3 +113,10 @@ spec:
             access: maintain
           - team: ${{ parameters.owner }}
             access: push
+    - id: register
+      name: Register Application in Catalog
+      action: catalog:register
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
