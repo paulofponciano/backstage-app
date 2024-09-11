@@ -119,4 +119,4 @@ spec:
       if: ${{ parameters.dryRun !== true }}
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml.yaml"
+        catalogInfoPath: "/catalog-info.yaml"
