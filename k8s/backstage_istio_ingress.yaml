@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway
   servers:
     - hosts:
-        - backstage.pauloponciano.digital
+        - backstage.sevira.cloud
       port:
         name: http
         number: 80
@@ -16,7 +16,7 @@ spec:
       tls:
         httpsRedirect: true
     - hosts:
-        - backstage.pauloponciano.digital
+        - backstage.sevira.cloud
       port:
         name: https-workloads
         number: 443
@@ -33,7 +33,7 @@ spec:
   gateways:
     - backstage-gateway
   hosts:
-    - backstage.pauloponciano.digital
+    - backstage.sevira.cloud
   http:
     - route:
         - destination:
