@@ -1,18 +1,18 @@
 app:
   title: Community Backstage
-  baseUrl: https://backstage.pauloponciano.digital
+  baseUrl: https://backstage.sevira.cloud
 
 organization:
   name: Community
 
 backend:
-  baseUrl: https://backstage.pauloponciano.digital
+  baseUrl: https://backstage.sevira.cloud
   listen:
     port: 7007
   csp:
     connect-src: ["'self'", 'http:', 'https:']
   cors:
-    origin: https://backstage.pauloponciano.digital
+    origin: https://backstage.sevira.cloud
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   database:
