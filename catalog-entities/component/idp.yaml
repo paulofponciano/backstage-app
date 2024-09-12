@@ -5,7 +5,7 @@ metadata:
   title: Community Backstage App
   links:
     - title: Community Backstage App
-      url: https://backstage.pauloponciano.digital/
+      url: https://backstage.sevira.cloud/
   annotations:
     github.com/project-slug: paulofponciano/backstage-app
     argocd/app-name: 'community-idp'
