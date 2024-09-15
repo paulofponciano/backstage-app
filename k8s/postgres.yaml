@@ -38,13 +38,13 @@ spec:
       labels:
         app: postgres
     spec:
-      initContainers:
-        - name: init-postgres
-          image: busybox
-          command: ["sh", "-c", "rm -rf /var/lib/postgres/data/*"]
-          volumeMounts:
-          - name: postgresdb
-            mountPath: /var/lib/postgres/data
+      # initContainers:
+      #   - name: init-postgres
+      #     image: busybox
+      #     command: ["sh", "-c", "rm -rf /var/lib/postgres/data/*"]
+      #     volumeMounts:
+      #     - name: postgresdb
+      #       mountPath: /var/lib/postgres/data
       containers:
         - name: postgres
           image: postgres:13.2-alpine
