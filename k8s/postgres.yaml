@@ -26,7 +26,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: postgresdb
   namespace: backstage
 spec:
   replicas: 1
@@ -38,6 +38,13 @@ spec:
       labels:
         app: postgres
     spec:
+      initContainers:
+        - name: init-postgres
+          image: busybox
+          command: ["sh", "-c", "rm -rf /var/lib/postgres/data/*"]
+          volumeMounts:
+          - name: postgresdb
+            mountPath: /var/lib/postgres/data
       containers:
         - name: postgres
           image: postgres:13.2-alpine
@@ -50,7 +57,6 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
-              subPath: data
       volumes:
         - name: postgresdb
           persistentVolumeClaim:
