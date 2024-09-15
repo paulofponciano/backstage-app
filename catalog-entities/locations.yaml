@@ -9,6 +9,6 @@ spec:
     - ./components.yaml
     - ./systems.yaml
     - ./group/*.yaml
-    - ./users/*.yaml
+    - ./user/*.yaml
     - ./resources.yaml
     - ./templates/*.yaml
