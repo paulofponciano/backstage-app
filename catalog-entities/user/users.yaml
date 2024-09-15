@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: paulofponciano
+spec:
+  profile:
+    displayName: Paulo Ponciano
+    email: paulofponciano@gmail.com
+    picture: https://api.dicebear.com/7.x/avataaars/svg?seed=Leo&backgroundColor=transparent
+  memberOf: [sre]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: portelagabriel
+spec:
+  profile:
+    displayName: Gabriel Portela
+    email: gportela@valcann.com.br
+    picture: https://api.dicebear.com/7.x/avataaars/svg?seed=Leo&backgroundColor=transparent
+  memberOf: [sre]
