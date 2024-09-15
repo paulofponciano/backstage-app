@@ -1,29 +1,21 @@
----
-# kubernetes/postgres-storage.yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: postgres-storage
-  namespace: backstage
-  labels:
-    type: local
-spec:
-  storageClassName: gp3
-  capacity:
-    storage: 2G
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: '/mnt/data'
+--- 
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata: 
+  name: standard
+provisioner: ebs.csi.aws.com
+#reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  tagSpecification_1: "Environment=DEV"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: postgres-storage-claim
+  name: postgres-storage-claim-new
   namespace: backstage
 spec:
-  storageClassName: gp3
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:
@@ -58,10 +50,11 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
+              subPath: data
       volumes:
         - name: postgresdb
           persistentVolumeClaim:
-            claimName: postgres-storage-claim
+            claimName: postgres-storage-claim-new
 ---
 # kubernetes/postgres-service.yaml
 apiVersion: v1
