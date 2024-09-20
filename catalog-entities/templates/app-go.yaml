@@ -81,7 +81,7 @@ spec:
             allowedHosts:
               - github.com
             allowedOwners:
-              - paulofponciano-idp
+              - pegasus-idp
 
     - title: Infrastructure
       properties:
@@ -110,7 +110,7 @@ spec:
       action: fetch:template
       cookiecutterCompat: true
       input:
-        url: https://github.com/paulofponciano-idp/go-template-backstage
+        url: https://github.com/pegasus-idp/go-template
         copyWithoutTemplating:
           - .github/workflows/*
         values:
@@ -146,7 +146,7 @@ spec:
       if: ${{ parameters.kube == true }}
       input:
         targetPath: ./kube
-        url: https://github.com/paulofponciano/backstage-app/tree/main/catalog-entities/skeleton/kubernetes/apps/kustomize
+        url: https://github.com/paulofponciano/backstage-app/tree/v1.30.4/catalog-entities/skeleton/kubernetes/apps/kustomize
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
@@ -158,7 +158,7 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
-        repoUrl: github.com?repo=gitops&owner=paulofponciano-idp
+        repoUrl: github.com?repo=gitops&owner=pegasus-idp
         branchName: create-${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
         description: |
