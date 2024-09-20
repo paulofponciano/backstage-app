@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway
   servers:
     - hosts:
-        - ${{values.component_id}}.pauloponciano.digital
+        - ${{values.component_id}}.sevira.cloud
       port:
         name: http
         number: 80
@@ -16,7 +16,7 @@ spec:
       tls:
         httpsRedirect: true
     - hosts:
-        - ${{values.component_id}}.pauloponciano.digital
+        - ${{values.component_id}}.sevira.cloud
       port:
         name: https-workloads
         number: 443
@@ -37,7 +37,7 @@ spec:
   gateways:
   - ${{values.component_id}}-gw
   hosts:
-  - ${{values.component_id}}.pauloponciano.digital
+  - ${{values.component_id}}.sevira.cloud
   http:
   - name: primary
     route:
