@@ -1,0 +1,22 @@
+# CLAIM
+# ---
+# apiVersion: api.sevira.cloud/v1alpha1
+# kind: CustomDnsRecord
+# metadata:
+#   name: ${{values.name}}-${{values.env}}-dns-record
+#   namespace: environment-crossplane
+#   labels:
+#     backstage.io/kubernetes-id: dns-record
+# spec:
+#   compositionSelector:
+#     matchLabels:
+#       db-engine: ${{values.engine}}
+#   resourceConfig:
+#     providerConfigName: aws
+#     region: ${{values.region}}
+#     size: ${{values.size}}
+#     engine: ${{values.engine}}
+#     tags:
+#       automation-by: crossplane
+#       ownerName: ${{values.owner}}
+
