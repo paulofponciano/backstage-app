@@ -71,10 +71,15 @@ kubernetes:
   clusterLocatorMethods:
     - type: 'config'
       clusters:
-        - url: ${EKS_ENDPOINT}
+        - url: kubernetes.default.svc.cluster.local
           name: pegasus
           authProvider: 'serviceAccount'
-          skipTLSVerify: true
+          skipTLSVerify: false
           skipMetricsLookup: true
-          serviceAccountToken: ${SA_TOKEN}
+        - url: ${EKS_ENDPOINT}
+          name: generico
+          authProvider: 'serviceAccount'
+          skipTLSVerify: false
+          skipMetricsLookup: true
+          serviceAccountToken: ${SA_TOKEN}  
           caData: ${CA_DATA}
