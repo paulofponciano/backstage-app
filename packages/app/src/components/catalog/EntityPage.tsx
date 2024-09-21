@@ -108,7 +108,7 @@ const cicdContent = (
 const gitOpsContent = (
   <EntitySwitch>
     <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
-      <Grid item sm={4}>
+      <Grid item sm={6}>
         <EntityArgoCDOverviewCard />
       </Grid>
     </EntitySwitch.Case>
@@ -146,6 +146,7 @@ const entityWarningContent = (
 const overviewContent = (
   <Grid container spacing={3} alignItems="stretch">
     {entityWarningContent}
+    {gitOpsContent}
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
@@ -161,9 +162,6 @@ const overviewContent = (
     </Grid>
     <Grid item sm={6}>
       <EntityRecentGithubActionsRunsCard limit={4} variant="gridItem" />
-    </Grid>
-    <Grid item sm={6}>
-      {gitOpsContent}
     </Grid>
   </Grid>
 );
