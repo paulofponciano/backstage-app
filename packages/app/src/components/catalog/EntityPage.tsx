@@ -146,7 +146,6 @@ const entityWarningContent = (
 const overviewContent = (
   <Grid container spacing={3} alignItems="stretch">
     {entityWarningContent}
-    {gitOpsContent}
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
@@ -163,6 +162,7 @@ const overviewContent = (
     <Grid item sm={6}>
       <EntityRecentGithubActionsRunsCard limit={4} variant="gridItem" />
     </Grid>
+    {gitOpsContent}
   </Grid>
 );
 
