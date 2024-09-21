@@ -35,7 +35,7 @@ WORKDIR /app
 
 # This switches many Node.js dependencies to production mode.
 ENV NODE_ENV production
-ENV LOG_LEVEL=debug
+ENV LOG_LEVEL=error
 
 # Copy repo skeleton first, to avoid unnecessary docker cache invalidation.
 # The skeleton contains the package.json of each package in the monorepo,
