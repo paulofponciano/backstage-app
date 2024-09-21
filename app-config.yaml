@@ -76,10 +76,3 @@ kubernetes:
           authProvider: 'serviceAccount'
           skipTLSVerify: false
           skipMetricsLookup: true
-        - url: ${EKS_ENDPOINT}
-          name: generico
-          authProvider: 'serviceAccount'
-          skipTLSVerify: false
-          skipMetricsLookup: true
-          serviceAccountToken: ${SA_TOKEN}  
-          caData: ${CA_DATA}
