@@ -74,7 +74,7 @@ kubernetes:
         - url: ${EKS_ENDPOINT}
           name: pegasus
           authProvider: 'serviceAccount'
-          skipTLSVerify: false
+          skipTLSVerify: true
           skipMetricsLookup: true
           serviceAccountToken: ${SA_TOKEN}
           caData: ${CA_DATA}
