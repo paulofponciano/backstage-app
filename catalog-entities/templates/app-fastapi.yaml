@@ -150,7 +150,7 @@ spec:
       name: "Open PR in GitoOps Repository"
       action: publish:github:pull-request
       if: ${{ parameters.kube === true }}
-      inpput:
+      input:
         repoUrl: github.com?repo=gitops&owner=pegasus-idp
         branchName: create-${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
