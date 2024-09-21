@@ -29,6 +29,14 @@ integrations:
       token: ${GITHUB_TOKEN}
 
 proxy:
+  '/argocd/api':
+    target:'http://argocd-server.argocd.svc.cluster.local/api/v1/'
+    changeOrigin: true
+    # only if your argocd api has self-signed cert
+    secure: false
+    headers:
+      Cookie:
+        $env: ARGOCD_AUTH_TOKEN
   '/test':
     target: 'https://example.com'
     changeOrigin: true

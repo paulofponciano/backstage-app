@@ -60,6 +60,11 @@ import {
 } from '@backstage-community/plugin-github-actions';
 
 import {
+  EntityArgoCDOverviewCard,
+  isArgocdAvailable
+} from '@roadiehq/backstage-plugin-argo-cd';
+
+import {
   EntityKubernetesContent,
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
@@ -96,6 +101,16 @@ const cicdContent = (
           </Button>
         }
       />
+    </EntitySwitch.Case>
+  </EntitySwitch>
+);
+
+const gitOpsContent = (
+  <EntitySwitch>
+    <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
+      <Grid item sm={4}>
+        <EntityArgoCDOverviewCard />
+      </Grid>
     </EntitySwitch.Case>
   </EntitySwitch>
 );
@@ -146,6 +161,9 @@ const overviewContent = (
     </Grid>
     <Grid item sm={6}>
       <EntityRecentGithubActionsRunsCard limit={4} variant="gridItem" />
+    </Grid>
+    <Grid item sm={6}>
+      {gitOpsContent}
     </Grid>
   </Grid>
 );
