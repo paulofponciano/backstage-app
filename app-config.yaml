@@ -30,7 +30,7 @@ integrations:
 
 proxy:
   '/argocd/api':
-    target:'http://argocd-server.argocd.svc.cluster.local/api/v1/'
+    target: 'http://argocd-server.argocd.svc.cluster.local/api/v1/'
     changeOrigin: true
     # only if your argocd api has self-signed cert
     secure: false
