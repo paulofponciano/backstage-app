@@ -1,0 +1,22 @@
+apiVersion: route53.aws.upbound.io/v1beta1
+kind: Record
+metadata:
+  name: ${{values.component_id}}
+  namespace: ${{values.component_id}}
+  labels:
+    app: ${{values.component_id}}
+    version: 0.0.1
+    backstage.io/kubernetes-id: ${{values.component_id}}
+spec:
+  forProvider:
+    name: ${{values.component_id}}
+    alias:
+      - name: pegasus-staging-nlb-ingress-9e99ea4d081b6725.elb.us-east-2.amazonaws.com.
+        zoneId: ZLMOA37VPKANP #Hosted Zone ID for LB
+        evaluateTargetHealth: true
+    region: us-east-2
+    type: A
+    zoneId: Z02136633A0BUJO7ZT4W7 #Hosted Zone ID for .sevira.cloud
+  providerConfigRef:
+    name: aws
+    namespace: crossplane-system
