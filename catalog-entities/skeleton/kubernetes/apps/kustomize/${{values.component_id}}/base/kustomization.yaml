@@ -9,3 +9,4 @@ resources:
   - ${{values.component_id}}-service.yaml
   - ${{values.component_id}}-vs.yaml
   - ${{values.component_id}}-hpa.yaml
+  - ${{values.component_id}}-dns-record.yaml
