@@ -13,5 +13,5 @@ spec:
       domain: pauloponciano.digital
   resourceConfig:
     providerConfigName: aws
-    record: app: ${{values.component_id}}
+    record: ${{values.component_id}}
     region: us-east-2
